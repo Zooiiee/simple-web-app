@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git credentialsId: 'github-creds', url: 'https://github.com/Zooiiee/simple-web-app.git', branch: 'main'
+                git url: 'https://github.com/Zooiiee/simple-web-app.git', branch: 'main'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Nothing to build for static HTML, skipping...'
+                echo 'Static site - no build step needed.'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying index.html to local HTTP server...'
+                echo 'Copying files to Apache web server folder...'
                 sh '''
-                  mkdir -p /var/www/html
-                  cp index.html /var/www/html/index.html
+                  sudo mkdir -p /var/www/html
+                  sudo cp -r * /var/www/html/
                 '''
             }
         }
