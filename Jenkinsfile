@@ -15,10 +15,8 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                echo 'Deploying to local HTTP server...'
-                bat 'copy index.html "C:\\inetpub\\wwwroot\\index.html" /Y'
-            }
-        }
+    echo 'Deploying to local HTTP server...'
+    sh './deploy.sh'  // or whatever shell command you want to run on Linux
+}
     }
 }
