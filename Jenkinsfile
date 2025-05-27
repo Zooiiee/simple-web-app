@@ -10,14 +10,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Nothing to build for HTML, skipping...'
+                echo 'Nothing to build for static HTML, skipping...'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to local HTTP server...'
-                sh './deploy.sh'  // make sure this file exists and is executable
+                echo 'Deploying index.html to local HTTP server...'
+                // Copy index.html to your web server folder; adjust path as needed
+                sh 'cp index.html /var/www/html/index.html'
             }
         }
     }
