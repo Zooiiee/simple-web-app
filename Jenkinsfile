@@ -15,8 +15,10 @@ pipeline {
         }
 
         stage('Deploy') {
-    echo 'Deploying to local HTTP server...'
-    sh './deploy.sh'  // or whatever shell command you want to run on Linux
-}
+            steps {
+                echo 'Deploying to local HTTP server...'
+                sh './deploy.sh'  // make sure this file exists and is executable
+            }
+        }
     }
 }
