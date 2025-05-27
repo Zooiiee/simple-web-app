@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git url: 'https://github.com/Zooiiee/simple-web-app.git', branch: 'main'
+                git credentialsId: 'github-creds', url: 'https://github.com/Zooiiee/simple-web-app.git'
             }
         }
 
@@ -17,10 +17,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Copying files to Apache web server folder...'
-                sh '''
-                  sudo mkdir -p /var/www/html
-                  sudo cp -r * /var/www/html/
-                '''
+                // You might need to run as root or configure permissions properly
+                sh 'mkdir -p /var/www/html'
+                sh 'cp index.html /var/www/html/index.html'
             }
         }
     }
