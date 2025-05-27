@@ -17,8 +17,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying index.html to local HTTP server...'
-                // Copy index.html to your web server folder; adjust path as needed
-                sh 'cp index.html /var/www/html/index.html'
+                sh '''
+                  mkdir -p /var/www/html
+                  cp index.html /var/www/html/index.html
+                '''
             }
         }
     }
