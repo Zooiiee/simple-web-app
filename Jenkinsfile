@@ -18,8 +18,8 @@ pipeline {
             steps {
                 echo 'Copying files to Apache web server folder...'
                 // You might need to run as root or configure permissions properly
-                sh 'mkdir -p /var/www/html'
-                sh 'cp index.html /var/www/html/index.html'
+                sh 'mkdir -p /home/jenkins/test-deploy'
+                sh 'cp index.html /home/jenkins/test-deploy/index.html'
             }
         }
     }
